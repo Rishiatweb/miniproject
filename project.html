@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNI5</title>
+    <link rel="stylesheet" href="project.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Arima:wght@100;200;300;400;500;600;700&family=Rethink+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Pacifico&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Pacifico&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <section>
+        <header>
+            <a href="#" class="logo">UNI5</a>
+            <div class="toggle" id="toggle-button" onclick="menuToggle()"></div>
+        </header>
+        <div class="glass"></div>
+        <div class="content">
+            <h2>Rest Easy...<br><span>a place where you can find your lost belongings!</span></h2>
+        </div>
+        <video id="background-video" src="placeholderviddark.mp4" autoplay muted loop aria-hidden="true"></video>
+        <img id="placeholder-image" src="placeholderimg.jpg" alt="Background image of a lost and found package"
+            style="display: none;">
+        <button class="toggle-video" onclick="toggleVideoImage()" aria-pressed="false"
+            aria-label="show image instead of video, if you are not comfortable with a video">Toggle
+            Video/Image</button>
+        <nav aria-label="Social Media Links">
+            <ul class="sci" role="navigation">
+                <li style="--i: 1"><a href="https://www.facebook.com" aria-label="Visit our Facebook page"><i
+                            class="fab fa-facebook" aria-hidden="true"></i>Facebook</a></li>
+                <li style="--i: 2"><a href="https://www.twitter.com" aria-label="Visit our Twitter profile"><i
+                            class="fa-brands fa-twitter" aria-hidden="true"></i>Twitter</a></li>
+                <li style="--i: 3"><a href="https://www.instagram.com" aria-label="Visit our Instagram progile"><i
+                            class="fab fa-instagram" aria-hidden="true"></i>Instagram</a></li>
+            </ul>
+        </nav>
+        <nav aria-label="Primary navigation">
+            <ul class="navigation" role="navigation">
+                <li style="--i:1;">
+                    <a href="https://uni5-d6da2.web.app/" target="_blank" aria-label="Home page"
+                        rel="noopener noreferrer">
+                        <i class="fas fa-home" aria-hidden="true"></i>Home
+                    </a>
+                </li>
+                <li style="--i:2;">
+                    <a href="https://uni5-d6da2.web.app/about" target="_blank" aria-label="About page"
+                        rel="noopener noreferrer">
+                        <i class="fas fa-info-circle" aria-hidden="true"></i>About
+                    </a>
+                </li>
+                <li style="--i:3;">
+                    <a href="https://uni5-d6da2.web.app/trending" target="_blank" aria-label="Browse trending items"
+                        rel="noopener noreferrer">
+                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>Browse
+                    </a>
+                </li>
+                <li style="--i:4;">
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Contact page">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>Contact
+                    </a>
+                </li>
+                <li style="--i:5;">
+                    <a href="https://uni5-d6da2.web.app/profile" target="_blank" aria-label="User profile page"
+                        rel="noopener noreferrer">
+                        <i class="fa-solid fa-address-card" aria-hidden="true"></i>Profile
+                    </a>
+                </li>
+                <li style="--i:6;">
+                    <a href="#" target="_blank" aria-label="user login or sign up"
+                        rel="noopener noreferrer">
+                        <i class="fa-solid fa-address-card" aria-hidden="true"></i>login
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </section>
+</body>
+</html>

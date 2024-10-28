@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Signup Page with Day/Night Mode</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: white;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+            flex-direction: column; 
+            position: relative;
+        }
+
+        body.night-mode {
+            background-color: black;
+            color: white;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 400px;
+            height: auto;
+            transition: background-color 0.3s;
+            position: relative; 
+        }
+
+        body.night-mode .container {
+            background: #333;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        body.night-mode input {
+            background-color: #322A2A;
+            color: white;
+            border: 1px solid #777;
+        }
+
+        button {
+            width: 95%;
+            padding: 10px;
+            background-color: #3730a3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2a2486;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+
+        #toggle-button {
+            position: fixed;
+            bottom: 20px; 
+            left: 600px; 
+            font-size: 24px; 
+            cursor: pointer; 
+            background: none;
+            border: none;
+            color: inherit;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #0B095D;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+            button {
+                padding: 12px;
+            }
+        }
+
+        @media (min-width: 601px) and (max-width: 900px) {
+            .container {
+                width: 70%;
+            }
+            button {
+                padding: 14px;
+            }
+        }
+
+        @media (min-width: 901px) {
+            .container {
+                width: 400px;
+            }
+            button {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="loginContainer" role="form" aria-labelledby="loginHeader">
+        <button id="homeButton" class="back-button" aria-label="Back to Home">Back to Home</button>
+        <form id="loginForm" aria-label="Login Form">
+            <h1 id="loginHeader">Login</h1>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required aria-required="true">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required aria-required="true">
+            <button type="submit" aria-label="Login">Login</button>
+            <p>Don't have an account? <a href="#" id="signupButton" aria-label="Sign up">Sign up here</a></p>
+        </form>
+    </div>
+
+    <div class="container" id="signupContainer" style="display: none;" role="form" aria-labelledby="signupHeader">
+        <button id="homeButtonSignup" class="back-button" aria-label="Back to Home">Back to Home</button>
+        <form id="signupForm" aria-label="Signup Form">
+            <h1 id="signupHeader">Sign Up</h1>
+            <label for="signupUsername">Username:</label>
+            <input type="text" id="signupUsername" name="signupUsername" required aria-required="true">
+            <label for="email">Email Id:</label>
+            <input type="email" id="email" name="email" required aria-required="true">
+            <label for="createPassword">Create Password:</label>
+            <input type="password" id="createPassword" name="createPassword" required aria-required="true">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required aria-required="true">
+            <div>
+                <label for="terms">
+                    I agree to the <a href="#" id="termsLink" aria-label="Terms and Conditions">terms and conditions</a>
+                    <input type="checkbox" id="terms" name="terms" required aria-required="true">
+                </label>
+            </div>
+            <br>
+            <button type="submit" aria-label="Sign Up">Sign Up</button>
+            <br>
+            <p>Already have an account?</p>
+            <a href="#loginForm" id="backToLoginButton" aria-label="Back to login">Back to login <-- </a>
+        </form>
+    </div>
+
+    <button id="toggle-button" aria-label="Toggle Day/Night Mode">🌙</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggleButton = document.getElementById('toggle-button');
+            const signupButton = document.getElementById('signupButton');
+            const loginContainer = document.getElementById('loginContainer');
+            const signupContainer = document.getElementById('signupContainer');
+            const backToLoginButton = document.getElementById('backToLoginButton');
+
+            toggleButton.addEventListener('click', () => {
+                document.body.classList.toggle('night-mode');
+                toggleButton.textContent = document.body.classList.contains('night-mode') 
+                    ? '☀️' 
+                    : '🌙';
+            });
+
+            signupButton.onclick = function(e) {
+                e.preventDefault(); 
+                loginContainer.style.display = 'none';
+                signupContainer.style.display = 'block';
+            };
+
+            backToLoginButton.onclick = function() {
+                signupContainer.style.display = 'none';
+                loginContainer.style.display = 'block';
+                document.getElementById('signupForm').reset();
+            };
+
+            document.getElementById('loginForm').onsubmit = function(e) {
+                e.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                const usernameRegex = /^[a-zA-Z0-9]{8,}$/; 
+                if (!usernameRegex.test(username)) {
+                    alert("Username must be alphanumeric and at least 8 characters long.");
+                    return;
+                }
+
+                const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$/; 
+                if (!passwordRegex.test(password)) {
+                    alert("Password must include letters, numbers, and symbols, and be at least 7 characters long.");
+                    return;
+                }
+                alert('Login form submitted');
+            };
+
+            document.getElementById('signupForm').onsubmit = function(e) {
+                e.preventDefault();
+                const username = document.getElementById('signupUsername').value;
+                const email = document.getElementById('email').value;
+                const createPassword = document.getElementById('createPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+
+                const usernameRegex = /^[a-zA-Z0-9]{8,}$/; 
+                if (!usernameRegex.test(username)) {
+                    alert("Username must be alphanumeric and at least 8 characters long.");
+                    return;
+                }
+
+                const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+                if (!emailRegex.test(email)) {
+                    alert("Email must be in the format localpart@gmail.com.");
+                    return;
+                }
+
+                const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$/; 
+                if (!passwordRegex.test(createPassword)) {
+                    alert("Password must include letters, numbers, and symbols, and be at least 7 characters long.");
+                    return;
+                }
+
+                if (createPassword !== confirmPassword) {
+                    alert("Passwords do not match.");
+                    return;
+                }
+
+                alert('Signup form submitted');
+            };
+
+            document.getElementById('homeButton').onclick = function() {
+                window.location.href = '/'; 
+            };
+
+            document.getElementById('homeButtonSignup').onclick = function() {
+                window.location.href = '/'; 
+            };
+        });
+    </script>
+</body>
+</html>
